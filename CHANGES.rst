@@ -1,6 +1,8 @@
 Changelog
 =========
 
+* 2.1.2
+   * Changed to using access_token instead of api_key/secret.
 * 2.1.1
    * No runtime changes.
 * 2.1.0
