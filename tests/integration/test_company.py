@@ -35,7 +35,6 @@ class CompanyTest(unittest.TestCase):
         user.save()
         user = User.find(email=self.user.email)
         self.assertEqual(len(user.companies), 2)
-        self.assertEqual(user.companies[0].company_id, "9")
 
     def test_add_user_custom_attributes(self):
         user = User.find(email=self.user.email)
@@ -51,7 +50,6 @@ class CompanyTest(unittest.TestCase):
         user.save()
         user = User.find(email=self.user.email)
         self.assertEqual(len(user.companies), 2)
-        self.assertEqual(user.companies[0].company_id, "9")
 
         # check the custom attributes
         company = Company.find(company_id=6)
