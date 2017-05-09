@@ -20,6 +20,8 @@ from .segment import Segment  # noqa
 from .subscription import Subscription  # noqa
 from .tag import Tag  # noqa
 
+import logging
+
 import copy
 import random
 import re
@@ -52,7 +54,7 @@ class IntercomType(type):  # noqa
 
     @property
     def _auth(self):
-        return self.access_token
+        return self.access_token, ''
 
     @property
     def _random_endpoint(self):

@@ -32,15 +32,6 @@ class CountTest(unittest.TestCase):
         delete(cls.user)
         print(Intercom.rate_limit_details)
 
-    def test_user_counts_for_each_tag(self):
-        # Get User Tag Count Object
-        Tag.tag_users('blue', [self.user.id])
-        counts = Count.user_counts_for_each_tag
-        Tag.untag_users('blue', [self.user.id])
-        for count in counts:
-            if 'blue' in count:
-                eq_(count['blue'], 1)
-
     def test_user_counts_for_each_segment(self):
         # Get User Segment Count Object
         counts = Count.user_counts_for_each_segment
@@ -50,15 +41,6 @@ class CountTest(unittest.TestCase):
         # Get Company Segment Count Object
         counts = Count.company_counts_for_each_segment
         ok_(counts)
-
-    def test_company_counts_for_each_tag(self):
-        # Get Company Tag Count Object
-        Tag.tag_companies('blue', [self.company.id])
-        counts = Count.company_counts_for_each_tag
-        Tag.untag_companies('blue', [self.company.id])
-        # for count in counts:
-        #     if 'blue' in count:
-        #         eq_(count['blue'], 1)
 
     def test_company_counts_for_each_user(self):
         # Get Company User Count Object
