@@ -26,7 +26,7 @@ import re
 import six
 import time
 
-__version__ = '2.1.1.2'
+__version__ = '2.1.2'
 
 
 RELATED_DOCS_TEXT = "See https://github.com/jkeyes/python-intercom \
@@ -35,15 +35,13 @@ COMPATIBILITY_WARNING_TEXT = "It looks like you are upgrading from \
 an older version of python-intercom. Please note that this new version \
 (%s) is not backwards compatible." % (__version__)
 COMPATIBILITY_WORKAROUND_TEXT = "To get rid of this error please set \
-Intercom.app_api_key and don't set Intercom.api_key."
-CONFIGURATION_REQUIRED_TEXT = "You must set both Intercom.app_id and \
-Intercom.app_api_key to use this client."
+Intercom.access_token."
+CONFIGURATION_REQUIRED_TEXT = "You must set access_token to use this client."
 
 
 class IntercomType(type):  # noqa
 
-    app_id = None
-    app_api_key = None
+    access_token = None
     _hostname = "api.intercom.io"
     _protocol = "https"
     _endpoints = None
@@ -54,7 +52,7 @@ class IntercomType(type):  # noqa
 
     @property
     def _auth(self):
-        return (self.app_id, self.app_api_key)
+        return self.access_token
 
     @property
     def _random_endpoint(self):
@@ -74,15 +72,15 @@ class IntercomType(type):  # noqa
 
     @property
     def target_base_url(self):
-        if None in [self.app_id, self.app_api_key]:
+        if self.access_token is None:
             raise ArgumentError('%s %s' % (
                 CONFIGURATION_REQUIRED_TEXT, RELATED_DOCS_TEXT))
         if self._target_base_url is None:
-            basic_auth_part = '%s:%s@' % (self.app_id, self.app_api_key)
+            basic_auth_part = '%s@' % self.access_token
             if self.current_endpoint:
                 self._target_base_url = re.sub(
                     r'(https?:\/\/)(.*)',
-                    '\g<1>%s\g<2>' % (basic_auth_part),
+                    '\g<1>%s\g<2>' % basic_auth_part,
                     self.current_endpoint)
         return self._target_base_url
 

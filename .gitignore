@@ -8,5 +8,7 @@ venv
 .DS_Store
 docs/_build
 
+.idea/*
+
 intercom.sublime-project
 intercom.sublime-workspace

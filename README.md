@@ -12,7 +12,7 @@ Python bindings for the Intercom API (https://api.intercom.io).
 
 Version 2 of python-intercom is **not backwards compatible** with previous versions.
 
-One change you will need to make as part of the upgrade is to set `Intercom.app_api_key` and not set `Intercom.api_key`.
+One change you will need to make as part of the upgrade is to set `Intercom.access_token` and not set `Intercom.api_key`.
 
 ## Installation
 
@@ -23,8 +23,7 @@ One change you will need to make as part of the upgrade is to set `Intercom.app_
 ### Configure your access credentials
 
 ```python
-Intercom.app_id = "my_app_id"
-Intercom.app_api_key = "my-super-crazy-api-key"
+Intercom.access_token = "my_personal_access_token"
 ```
 
 
@@ -438,5 +437,5 @@ nosetests tests/unit
 Integration tests:
 
 ```bash
-INTERCOM_APP_ID=xxx INTERCOM_APP_API_KEY=xxx nosetests tests/integration
+INTERCOM_ACCESS_TOKEN=xxx nosetests tests/integration
 ```

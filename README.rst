@@ -17,7 +17,7 @@ Version 2 of python-intercom is **not backwards compatible** with
 previous versions.
 
 One change you will need to make as part of the upgrade is to set
-``Intercom.app_api_key`` and not set ``Intercom.api_key``.
+``Intercom.access_token`` and not set ``Intercom.api_key``.
 
 Installation
 ------------
@@ -34,8 +34,7 @@ Configure your access credentials
 
 .. code:: python
 
-    Intercom.app_id = "my_app_id"
-    Intercom.app_api_key = "my-super-crazy-api-key"
+    Intercom.access_token = "my_personal_access_token"
 
 Resources
 ~~~~~~~~~
@@ -474,7 +473,7 @@ Integration tests:
 
 .. code:: bash
 
-    INTERCOM_APP_ID=xxx INTERCOM_APP_API_KEY=xxx nosetests tests/integration
+    INTERCOM_ACCESS_TOKEN=xxx nosetests tests/integration
 
 .. |PyPI Version| image:: https://img.shields.io/pypi/v/python-intercom.svg
    :target: https://pypi.python.org/pypi/python-intercom

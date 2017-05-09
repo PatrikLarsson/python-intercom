@@ -33,8 +33,8 @@ Intercom documentation: `Authentication <http://api.intercom.io/docs#authenticat
 ::
 
     from intercom import Intercom
-    Intercom.app_id = 'dummy-app-id'
-    Intercom.app_api_key = 'dummy-api-key'
+    Intercom.access_token = 'dummy-access_token'
+
 
 Users
 -----

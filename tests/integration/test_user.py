@@ -8,8 +8,7 @@ from . import get_timestamp
 from . import get_or_create_user
 from . import delete
 
-Intercom.app_id = os.environ.get('INTERCOM_APP_ID')
-Intercom.app_api_key = os.environ.get('INTERCOM_APP_API_KEY')
+Intercom.access_token= os.environ.get('INTERCOM_ACCESS_TOKEN')
 
 
 class UserTest(unittest.TestCase):

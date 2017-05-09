@@ -15,20 +15,17 @@ class ExpectingArgumentsTest(unittest.TestCase):
 
     def setUp(self):  # noqa
         self.intercom = intercom.Intercom
-        self.intercom.app_id = 'abc123'
-        self.intercom.app_api_key = 'super-secret-key'
+        self.intercom.access_key = 'my_personal_access_token'
 
     @istest
-    def it_raises_argumenterror_if_no_app_id_or_app_api_key_specified(self):  # noqa
-        self.intercom.app_id = None
-        self.intercom.app_api_key = None
+    def it_raises_argumenterror_if_no_access_token_specified(self):  # noqa
+        self.intercom.access_key = None
         with assert_raises(intercom.ArgumentError):
             self.intercom.target_base_url
 
     @istest
-    def it_returns_the_app_id_and_app_api_key_previously_set(self):
-        eq_(self.intercom.app_id, 'abc123')
-        eq_(self.intercom.app_api_key, 'super-secret-key')
+    def it_returns_the_access_token_previously_set(self):
+        eq_(self.intercom.access_token, 'my_personal_access_token')
 
     @istest
     def it_defaults_to_https_to_api_intercom_io(self):
